@@ -1,4 +1,9 @@
 FinancialPlanner::Application.routes.draw do
+  root to: 'static_pages#home'
+
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
