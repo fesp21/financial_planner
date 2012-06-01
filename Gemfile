@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.5'
 gem 'foreigner', '1.1.6'
+gem 'money', '5.0.0'
 
 group :development do
   gem 'rspec-rails', '2.9.0'
