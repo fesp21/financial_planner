@@ -39,7 +39,7 @@ describe Category do
   describe "when budget" do
   	
   	describe "is not present" do
-  		before { @category.budget = nil }
+  		before { @category.budget = "" }
   		it { should_not be_valid }
   	end
 
@@ -55,6 +55,11 @@ describe Category do
   	
   	describe "is text" do
   		before { @category.budget = "nope" }
+  		it { should_not be_valid }
+  	end
+
+  	describe "has fractions of a cent" do
+  		before { @category.budget = 150.001 }
   		it { should_not be_valid }
   	end
   end
