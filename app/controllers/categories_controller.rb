@@ -2,8 +2,7 @@ class CategoriesController < ApplicationController
   before_filter :signed_in_user
 
   def new
-    #todo: allow nil budget
-  	@category = Category.new(name: "", budget: "")
+  	@category = Category.new
   end
 
   def create

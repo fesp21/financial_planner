@@ -44,12 +44,7 @@ describe Category do
   	end
 
   	describe "is an integer" do
-  		before { @category.budget = 150 }
-  		it { should be_valid }
-  	end
-
-  	describe "is a decimal" do
-  		before { @category.budget = 150.00 }
+  		before { @category.budget = "150" }
   		it { should be_valid }
   	end
   	
@@ -59,7 +54,7 @@ describe Category do
   	end
 
   	describe "has fractions of a cent" do
-  		before { @category.budget = 150.001 }
+  		before { @category.budget = "150.001" }
   		it { should_not be_valid }
   	end
   end

@@ -16,7 +16,7 @@ class Category < ActiveRecord::Base
 	composed_of :budget,
 							:class_name => 'Money',
 							:mapping => %w(budget cents),
-							:constructor => Proc.new { |cents| Money.new(cents, Money.default_currency) },
+							:constructor => Proc.new { |cents| Money.new(cents || 0, Money.default_currency) },
 							:converter => Proc.new { |value|
 								if value.respond_to?(:to_money)
 									money = value.to_money
@@ -28,7 +28,5 @@ class Category < ActiveRecord::Base
 							}
 
 	validates :name, presence: true, uniqueness: true
-	validates :budget, 
-						presence: true, 
-						is_money: true
+	validates :budget, presence: true, is_money: true
 end
