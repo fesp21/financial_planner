@@ -9,9 +9,11 @@
 #  updated_at :datetime        not null
 #
 
+include MoneyModule
+
 class Category < ActiveRecord::Base
 	attr_accessible :name, :budget
-	composed_of :budget, 
+	composed_of :budget,
 							:class_name => 'Money',
 							:mapping => %w(budget cents),
 							:constructor => Proc.new { |cents| Money.new(cents, Money.default_currency) },
@@ -28,6 +30,5 @@ class Category < ActiveRecord::Base
 	validates :name, presence: true, uniqueness: true
 	validates :budget, 
 						presence: true, 
-						numericality: { greater_than: 0 }, 
-						whole_cent: true
+						is_money: true
 end
