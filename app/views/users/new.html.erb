@@ -7,19 +7,19 @@
       <%= render 'shared/error_messages', object: f.object %>
       <div>
         <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, required: true %>
       </div>
       <div>
         <%= f.label :email %>
-        <%= f.text_field :email %>
+        <%= f.email_field :email, required: true %>
       </div>
       <div>
       	<%= f.label :password %>
-      	<%= f.password_field :password %>
+      	<%= f.password_field :password, required: true %>
       </div>
       <div>
       	<%= f.label :password_confirmation, "Confirmation" %>
-      	<%= f.password_field :password_confirmation %>
+      	<%= f.password_field :password_confirmation, required: true %>
       </div>
       <%= f.submit "Create User", :class => "btn btn-large btn-primary" %>
     <% end %>

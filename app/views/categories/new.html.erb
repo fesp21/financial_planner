@@ -7,12 +7,12 @@
       <%= render 'shared/error_messages', object: f.object %>
       <div>
         <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, required: true %>
       </div>
       <div>
         <!-- todo: bootstrap prepend $ -->
         <%= f.label :budget %>
-        <%= f.money_field :budget %>
+        <%= f.money_field :budget, required: true %>
       </div>
       <%= f.submit "Add Category", :class => "btn btn-large btn-primary" %>
     <% end %>

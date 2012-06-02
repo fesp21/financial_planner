@@ -8,6 +8,6 @@ class MyCustomFormBuilder < ActionView::Helpers::FormBuilder
 		else
 			formatted_value = value.format(symbol: false)
 		end
-		text_field method, options.merge(:value => (formatted_value))
+		number_field method, options.merge(value: (formatted_value), min: 0.01, step: 0.01)
 	end
 end
