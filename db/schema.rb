@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20120602212303) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
-  add_foreign_key "debits", "categories", :name => "debits_category_id_fk"
+  add_foreign_key "debits", "categories", :name => "debits_category_id_fk", :dependent => :nullify
   add_foreign_key "debits", "users", :name => "debits_user_id_fk", :dependent => :delete
 
 end

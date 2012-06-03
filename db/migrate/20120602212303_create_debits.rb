@@ -10,6 +10,6 @@ class CreateDebits < ActiveRecord::Migration
       t.timestamps
     end
     add_foreign_key :debits, :users, :dependent => :delete
-    add_foreign_key :debits, :categories
+    add_foreign_key :debits, :categories, :dependent => :nullify
   end
 end
