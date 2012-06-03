@@ -46,10 +46,18 @@ describe Debit do
 			before { @debit.transaction_date = "2001/02/03" }
 			it { should be_valid }
 		end
-		
+
 		describe "is not a date" do
 			before { @debit.transaction_date = "not a date" }
 			it { should_not be_valid }
 		end
 	end
+
+	describe "accessible attributes" do
+    it "should not allow access to user_id" do
+      expect do
+        Debit.new(user_id: user.id)
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end    
+  end
 end

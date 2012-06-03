@@ -18,6 +18,7 @@ describe Category do
 
 	it { should respond_to(:name) }
 	it { should respond_to(:budget) }
+	it { should respond_to(:debits) }
 	it { should be_valid }
 
 	describe "when name" do
@@ -37,6 +38,7 @@ describe Category do
 		end
 	end
 
+	# todo: factor this out
 	describe "when budget" do
 		describe "is not present" do
 			before { @category.budget = "" }
@@ -56,6 +58,43 @@ describe Category do
 		describe "has fractions of a cent" do
 			before { @category.budget = "150.001" }
 			it { should_not be_valid }
+		end
+	end
+
+	# todo: factor this out
+	describe "debits" do
+		before { @category.save }
+		let(:user) { FactoryGirl.create(:user) }
+		let!(:newer_debit) do
+			FactoryGirl.create(:debit,
+												 user: user,
+												 category_id: @category.id, 
+												 transaction_date: 1.hour.ago.to_date)
+		end
+		let!(:older_debit) do
+			FactoryGirl.create(:debit, 
+												 user: user,
+												 category_id: @category.id, 
+												 transaction_date: 1.day.ago.to_date)
+		end
+		let(:another_user) { FactoryGirl.create(:user) }
+		let!(:debit_from_another_user) do 
+			FactoryGirl.create(:debit,
+												 user: another_user,
+												 category_id: @category.id,
+												 transaction_date: 2.days.ago.to_date)
+		end
+
+		it "should have debits from all users in the right order" do
+			@category.debits.should == [newer_debit, older_debit, debit_from_another_user]
+		end
+
+		it "on destroy should not destroy associated debits" do
+			debits = @category.debits
+			@category.destroy
+			debits.each do |debit|
+				Debit.find_by_id(debit.id).should_not be_nil
+			end
 		end
 	end
 end
