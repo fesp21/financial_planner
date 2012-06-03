@@ -12,20 +12,9 @@
 include MoneyModule
 
 class Category < ActiveRecord::Base
+	extend MoneyModule
 	attr_accessible :name, :budget
-	composed_of :budget,
-							:class_name => 'Money',
-							:mapping => %w(budget cents),
-							:constructor => Proc.new { |cents| Money.new(cents || 0, Money.default_currency) },
-							:converter => Proc.new { |value|
-								if value.respond_to?(:to_money)
-									money = value.to_money
-									money.original_value = value
-									money
-								else 
-									raise(ArgumentError, "Can't convert #{value.class} to Money") 
-								end
-							}
+	is_money_column :budget
 
 	validates :name, presence: true, uniqueness: true
 	validates :budget, presence: true, is_money: true

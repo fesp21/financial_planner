@@ -12,7 +12,7 @@
 require 'spec_helper'
 
 describe Category do
-  before { @category = Category.new(name: "cats", budget: "150.00") }
+  before { @category = Category.new(name: "Cats", budget: "150.00") }
 
   subject { @category }
 
