@@ -9,4 +9,5 @@ class Debit < ActiveRecord::Base
 
 	validates :cost, presence: true, is_money: true
 	validates :transaction_date, date: true
+	default_scope order: 'debits.transaction_date DESC'
 end
