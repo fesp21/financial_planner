@@ -10,7 +10,7 @@ class IsMoneyValidator < ActiveModel::EachValidator
 				 msg = "can't be negative or zero"
 			end
 		else
-			msg = "must be a number"
+			msg = "is not a number"
 		end
 
 		if msg
