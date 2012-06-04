@@ -5,7 +5,12 @@
 			<nav>
 				<ul class="nav pull-right">
 					<% if signed_in? %>
+						<li><%= link_to "Add Debits", new_debit_path %></li>
+						<li><%= link_to "Add Categories", new_category_path %></li>
+						<li><%= link_to "Add Users", new_user_path %></li>
 						<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+					<% else %>
+						<li><%= link_to "Sign in", signin_path %></li>
 					<% end %>
 				</ul>
 			</nav>
