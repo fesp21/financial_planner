@@ -1,17 +1,27 @@
 <% provide(:title, 'Sign In') %>
 <h1>Sign In</h1>
+
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_tag sessions_path do %>
-			<div>
-				<%= label_tag :email %>
-				<%= text_field_tag :email, params[:email] %>
+		<%= form_tag(sessions_path, :class => "form-horizontal") do %>
+
+			<div class="control-group">
+				<%= label_tag :email, nil, :class => "control-label" %>
+				<div class="controls">
+					<%= text_field_tag :email, params[:email] %>
+				</div>
 			</div>
-			<div>
-				<%= label_tag :password %>
-				<%= password_field_tag :password %>
+
+			<div class="control-group">
+				<%= label_tag :password, nil, :class => "control-label" %>
+				<div class="controls">
+					<%= password_field_tag :password %>
+				</div>
 			</div>
-			<%= submit_tag "Sign In", :class => "btn btn-large btn-primary" %>
+
+			<div class="form-actions">
+				<%= submit_tag "Sign In", :class => "btn btn-large btn-primary" %>
+			</div>
 		<% end %>
 	</div>
 </div>
