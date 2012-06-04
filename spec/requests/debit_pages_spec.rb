@@ -57,11 +57,21 @@ describe "Debit views" do
 
 					it { should have_validation_error("Cost can't have fractions of a cent") }
 				end
+
+				describe "transaction date is not a date" do
+					before do
+						fill_in "Transaction date", with: "not a date"
+						click_button "Add Debit"
+					end
+
+					it { should have_validation_error("Transaction date is not a date") }
+				end
 			end
 
 			describe "with valid information" do
 				before do
 					fill_in "Cost", with: "150.00"
+					fill_in "Transaction date", with: "Jan 1, 2012"
 				end
 
 				it "should create a debit" do
