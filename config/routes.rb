@@ -8,6 +8,7 @@ FinancialPlanner::Application.routes.draw do
   # todo: add more actions and views for these!
   resources :users, only: [:new, :create]
   resources :categories, only: [:new, :create]
+  resources :debits, only: [:new, :create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
