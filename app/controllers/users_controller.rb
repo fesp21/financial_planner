@@ -8,11 +8,9 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params[:user])
   	if @user.save
-  		sign_in @user
   		flash[:success] = "User successfully added."
-  		redirect_to root_path
-  	else
-  		render 'new'
-  	end
+  		@user = User.new
+    end
+  	render 'new'
   end
 end
