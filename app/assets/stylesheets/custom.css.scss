@@ -49,6 +49,11 @@ body {
 	width: 140px;
 }
 
+form legend small {
+	color: $grayLight;
+	font-size: 14px;
+}
+
 /* miscellaneous */
 
 .debug_dump {
