@@ -26,7 +26,7 @@ describe "Debit views" do
 					it { should have_h1('Add Debit') }
 					it { should have_title('Add Debit') }
 					it { should have_validation_error("Cost can't be blank") }
-					it { should have_validation_error("Transaction date is not a date") }
+					it { should have_validation_error("Transaction date can't be blank") }
 				end
 			end
 
