@@ -1,0 +1,6 @@
+<li>
+  <%= user.name %>
+  <% if not current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
+  <% end %>
+</li>

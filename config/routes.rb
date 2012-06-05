@@ -6,7 +6,7 @@ FinancialPlanner::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   # todo: add more actions and views for these!
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :index, :destroy]
   resources :categories, only: [:new, :create]
   resources :debits, only: [:new, :create]
 
