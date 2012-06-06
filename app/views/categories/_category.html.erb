@@ -1,0 +1,9 @@
+<tr>
+	<td><%= category.name %></td>
+	<td>$<%= category.budget %></td>
+	<td><%= Money.us_dollar(category.debits.sum(:cost)).format %></td>
+	<td><%= link_to "delete", 
+									category, 
+									method: :delete, 
+									confirm: "All debits for this category will become orphans. Are you sure you want to ruin those poor debits?" %></td>
+</tr>
