@@ -1,0 +1,45 @@
+<% provide(:title, 'Enter Expenses') %>
+
+<div class="page-header">
+	<h1>Feel the burn <small>then dive into the toilet</small></h1>
+</div>
+
+<section>
+	<div class="row">
+		<div class="span6">
+			<h2>Easy Come</h2>
+			<button class="btn" >Add a credit</button>
+		</div>
+		<div class="span6">
+			<h2>Easy Go</h2>
+			<%= link_to "Add a debit", new_debit_path, class: "btn" %>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="row">
+		<div class="span8">
+			<h2>Recent Activity</h2>
+			<%= will_paginate %>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Cost</th>
+							<th>Category</th>
+							<th>Date</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% if @debits.empty? %>
+							<tr><td>No flushes yet. Rejoice!</td><td></td><td></td><td></td></tr>
+						<% else %>
+							<%= render @debits %>
+						<% end %>
+					</tbody>
+				</table>
+			<%= will_paginate %>
+		</div>
+	</div>
+</section>

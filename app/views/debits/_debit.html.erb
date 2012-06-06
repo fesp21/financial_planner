@@ -1,0 +1,7 @@
+<tr>
+	<td><%= debit.cost %></td>
+	<td><%= debit.category ? debit.category.name : "" %></td>
+	<td><%= debit.transaction_date %></td>
+	<td><%= debit.description %></td>
+	<td><%= link_to "delete", debit, method: :delete, confirm: "Are you sure you want to flush this innocent goldfish down the toilet?" %></td>
+</tr>

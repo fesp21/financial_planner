@@ -14,4 +14,14 @@ class DebitsController < ApplicationController
 			render 'new'
 		end
 	end
+
+	def destroy
+		Debit.find(params[:id]).destroy
+		flash[:success] = "You can pretend like it didn't happen, but we all know it did."
+		redirect_to debits_path
+	end
+
+	def index
+		@debits = Debit.paginate(:page => params[:page])
+	end
 end
