@@ -1,7 +1,12 @@
+<%
+	spent = Money.us_dollar(category.debits.sum(:cost))
+	diff = category.budget - spent
+%>
 <tr>
 	<td><%= category.name %></td>
 	<td>$<%= category.budget %></td>
-	<td><%= Money.us_dollar(category.debits.sum(:cost)).format %></td>
+	<td><%= spent.format %></td>
+	<td><%= diff.format %></td>
 	<td><%= link_to "delete", 
 									category, 
 									method: :delete, 

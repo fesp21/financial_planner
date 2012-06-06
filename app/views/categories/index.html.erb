@@ -10,11 +10,12 @@
 			<th>Name</th>
 			<th>Budget</th>
 			<th>Spent</th>
+			<th>Money Left</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% if @categories.empty? %>
-			<tr><td>No categories yet</td><td></td><td></td></tr>
+			<tr><td>No categories yet</td><td></td><td></td><td></td></tr>
 		<% else %>
 			<%= render @categories %>
 		<% end %>
