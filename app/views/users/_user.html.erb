@@ -1,6 +1,6 @@
 <li>
   <%= user.name %>
   <% if not current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
+    | <%= link_to "delete", user, method: :delete, confirm: "This will kill all debits from this user. Are you such a monster?" %>
   <% end %>
 </li>

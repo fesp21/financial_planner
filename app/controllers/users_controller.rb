@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
-			flash[:success] = "User added."
+			flash[:success] = "User added. You have brought life into this world."
 			redirect_to new_user_path
 		else
 			render 'new'
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		User.find(params[:id]).destroy
-		flash[:success] = "User destroyed."
+		flash[:success] = "So be it. User maliciously destroyed."
 		redirect_to users_path
 	end
 
