@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604053644) do
+ActiveRecord::Schema.define(:version => 20120609131437) do
 
   create_table "categories", :force => true do |t|
     t.integer  "budget",                   :null => false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20120604053644) do
   end
 
   add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+
+  create_table "credits", :force => true do |t|
+    t.integer  "amount",           :null => false
+    t.date     "transaction_date", :null => false
+    t.text     "description"
+    t.integer  "user_id",          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "debits", :force => true do |t|
     t.integer  "cost",             :null => false
@@ -41,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20120604053644) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  add_foreign_key "credits", "users", :name => "credits_user_id_fk", :dependent => :delete
 
   add_foreign_key "debits", "categories", :name => "debits_category_id_fk", :dependent => :nullify
   add_foreign_key "debits", "users", :name => "debits_user_id_fk", :dependent => :delete
