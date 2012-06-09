@@ -16,6 +16,7 @@ class Category < ActiveRecord::Base
 	attr_accessible :name, :budget
 	is_money_column :budget
 	has_many :debits
+	has_many :transactions
 
 	validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 	validates :budget, presence: true, is_money: true

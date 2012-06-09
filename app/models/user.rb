@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 	has_many :debits, dependent: :destroy
 	has_many :credits, dependent: :destroy
+	has_many :transactions, dependent: :destroy
 
 	before_save { |user| user.email = email.downcase }
 	validates :name, presence: true, length: { maximum: 50 }
