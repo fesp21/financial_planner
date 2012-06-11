@@ -1,0 +1,40 @@
+<%= form_for(@debit, :html => { :class => "form-horizontal" }) do |f| %>
+	<fieldset>
+		<%= render 'shared/error_messages', object: f.object %>
+
+		<%= f.hidden_field :type %>
+
+		<div class="control-group">
+			<%= f.label :amount, :class => "control-label" %>
+			<div class="controls">
+				<%= f.money_field :amount, required: true %>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :category_id, "Category", :class => "control-label" %>
+			<div class="controls">
+				<%= f.select :category_id, Category.all.collect{ |c| [c.name, c.id] }, include_blank: true %>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :transaction_date, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :transaction_date, type: "date", required: true %>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :description, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_area :description, rows: nil, cols: nil %>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit "Add Debit", :class => "btn btn-large btn-primary" %>
+			<small>is that an oxymoron?</small>
+		</div>
+	</fieldset>
+<% end %>
