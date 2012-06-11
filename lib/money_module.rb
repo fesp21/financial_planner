@@ -7,7 +7,10 @@ module MoneyModule
 		composed_of column,
 								:class_name => 'Money',
 								:mapping => [column, "cents"],
-								:constructor => Proc.new { |cents| Money.new(cents || 0, Money.default_currency) },
+								:constructor => Proc.new { |cents|
+									num = cents.nil? ? 0 : Float(cents)
+									Money.new(num || 0, Money.default_currency) 
+								},
 								:converter => Proc.new { |value|
 									if value.respond_to?(:to_money)
 										money = value.to_money
