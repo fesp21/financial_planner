@@ -1,5 +1,5 @@
 <%
-	spent = Money.us_dollar(category.debits.sum(:cost))
+	spent = Money.us_dollar(category.debits.sum(:amount))
 	diff = category.budget - spent
 %>
 <tr>

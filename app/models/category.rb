@@ -15,7 +15,7 @@ class Category < ActiveRecord::Base
 	extend MoneyModule
 	attr_accessible :name, :budget
 	is_money_column :budget
-	has_many :transactions
+	has_many :debits
 
 	validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 	validates :budget, presence: true, is_money: true
