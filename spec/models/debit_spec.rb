@@ -1,13 +1,14 @@
 # == Schema Information
 #
-# Table name: debits
+# Table name: transactions
 #
 #  id               :integer         not null, primary key
-#  cost             :integer         not null
+#  amount           :integer         not null
 #  description      :text
 #  category_id      :integer
-#  transaction_date :date
+#  transaction_date :date            not null
 #  user_id          :integer         not null
+#  type             :string(20)      not null
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
 #
