@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609164000) do
+ActiveRecord::Schema.define(:version => 20120612231712) do
 
   create_table "categories", :force => true do |t|
     t.integer  "budget",                   :null => false
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(:version => 20120609164000) do
   end
 
   add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+
+  create_table "goals", :force => true do |t|
+    t.string   "name",       :limit => 50, :null => false
+    t.integer  "cost",                     :null => false
+    t.integer  "rank",                     :null => false
+    t.boolean  "purchased",                :null => false
+    t.integer  "user_id",                  :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "goals", ["name"], :name => "index_goals_on_name", :unique => true
+  add_index "goals", ["rank"], :name => "index_goals_on_rank", :unique => true
 
   create_table "transactions", :force => true do |t|
     t.integer  "amount",                         :null => false
@@ -42,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20120609164000) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  add_foreign_key "goals", "users", :name => "goals_user_id_fk", :dependent => :delete
 
   add_foreign_key "transactions", "categories", :name => "transactions_category_id_fk", :dependent => :nullify
   add_foreign_key "transactions", "users", :name => "transactions_user_id_fk", :dependent => :delete

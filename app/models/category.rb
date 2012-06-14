@@ -17,6 +17,7 @@ class Category < ActiveRecord::Base
 	is_money_column :budget
 	has_many :debits
 
+	# todo: eventually, the unique columns should only be unique by user group
 	validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 	validates :budget, presence: true, is_money: true
 end
