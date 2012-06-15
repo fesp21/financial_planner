@@ -5,10 +5,11 @@ FinancialPlanner::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  # todo: add more actions and views for these!
+  # todo: add update actions and views for these!
   resources :users, only: [:new, :create, :index, :destroy]
-  resources :categories, only: [:new, :create, :index, :destroy]
+  resources :categories, only: [:create, :index, :destroy] # todo: add show
   resources :transactions, only: [:create, :destroy, :index]
+  resources :goals, only: [:create, :destroy, :index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

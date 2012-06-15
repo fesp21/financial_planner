@@ -1,0 +1,34 @@
+<%= form_for(@goal, :html => { :class => "form-horizontal" }) do |f| %>
+	<fieldset>
+		
+		<legend><span class="controls">Add Goal</span></legend>
+
+		<%= render 'shared/error_messages', object: f.object %>
+
+		<div class="control-group">
+			<%= f.label :name, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :name, required: true %>
+			</div>
+		</div>
+		
+		<!-- todo: bootstrap prepend $ -->
+		<div class="control-group">
+			<%= f.label :cost, :class => "control-label" %>
+			<div class="controls">
+				<%= f.money_field :cost, required: true %>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :rank, :class => "control-label" %>
+			<div class="controls">
+				<%= f.number_field :rank, required: true, min: 1, step: 1 %>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit "Add Category", :class => "btn btn-large btn-primary" %>
+		</div>
+	</fieldset>
+<% end %>
