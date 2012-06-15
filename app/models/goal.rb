@@ -26,4 +26,5 @@ class Goal < ActiveRecord::Base
 	# todo: cascade rank on uniqueness violation
 	validates :rank, presence: true, uniqueness: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 	validates_inclusion_of :purchased, in: [true, false], message: "must be true or false"
+	default_scope order: 'goals.rank'
 end
