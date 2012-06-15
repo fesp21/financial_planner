@@ -18,6 +18,10 @@ body {
 	padding-top: 60px;
 }
 
+section {
+	padding-bottom: 60px;
+}
+
 .bold {
 	font-weight: bold;
 }
@@ -52,6 +56,12 @@ body {
 form legend small {
 	color: $grayLight;
 	font-size: 14px;
+}
+
+/* index tables */
+
+.delete {
+	float: right;
 }
 
 /* miscellaneous */

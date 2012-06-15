@@ -1,7 +1,14 @@
 <tr>
-	<td class="credit">+$<%= credit.amount %></td>
+	<td class="credit">
+		+$<%= credit.amount %>
+		<span class="delete">
+			<%= link_to "delete", 
+									credit, 
+									method: :delete, 
+									confirm: "Are you sure you want to flush this innocent goldfish down the toilet?" %>
+		</span>
+	</td>
 	<td></td>
 	<td><%= credit.transaction_date %></td>
 	<td><%= credit.description %></td>
-	<td><%= link_to "delete", credit, method: :delete, confirm: "Are you sure you want to flush this innocent goldfish down the toilet?" %></td>
 </tr>

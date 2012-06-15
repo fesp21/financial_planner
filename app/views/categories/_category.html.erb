@@ -3,12 +3,16 @@
 	diff = category.budget - spent
 %>
 <tr>
-	<td><%= category.name %></td>
+	<td>
+		<%= category.name %>
+		<span class="delete">
+			<%= link_to "delete", 
+									category, 
+									method: :delete, 
+									confirm: "All debits for this category will become orphans. Are you sure you want to ruin those poor debits?" %>
+		</span>
+	</td>
 	<td>$<%= category.budget %></td>
 	<td><%= spent.format %></td>
 	<td><%= diff.format %></td>
-	<td><%= link_to "delete", 
-									category, 
-									method: :delete, 
-									confirm: "All debits for this category will become orphans. Are you sure you want to ruin those poor debits?" %></td>
 </tr>
