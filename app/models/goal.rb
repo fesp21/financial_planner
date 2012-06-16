@@ -19,12 +19,21 @@ class Goal < ActiveRecord::Base
 	attr_accessible :name, :cost, :rank, :purchased
 	is_money_column :cost
 	belongs_to :user
+	before_save :cascade_rank
 
 	# todo: eventually, the unique columns should only be unique by user group
 	validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 	validates :cost, presence: true, is_money: true
-	# todo: cascade rank on uniqueness violation
-	validates :rank, presence: true, uniqueness: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+	validates :rank, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 	validates_inclusion_of :purchased, in: [true, false], message: "must be true or false"
 	default_scope order: 'goals.rank'
+
+	private
+		# should this be a db trigger instead?
+		def cascade_rank
+			goal = Goal.find_by_rank(rank)
+			if goal
+				goal.update_attribute(:rank, goal.rank+1)
+			end
+		end
 end
