@@ -8,7 +8,9 @@
 									confirm: "Are you sure you want to flush this innocent goldfish down the toilet?" %>
 		</span>
 	</td>
-	<td><%= debit.category ? debit.category.name : "" %></td>
+	<% unless defined?(hide_category) %>
+		<td><%= debit.category.name if debit.category %></td>
+	<% end %>
 	<td><%= debit.transaction_date %></td>
 	<td><%= debit.description %></td>
 </tr>

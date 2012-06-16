@@ -7,7 +7,7 @@ FinancialPlanner::Application.routes.draw do
 
   # todo: add update actions and views for these!
   resources :users, only: [:new, :create, :index, :destroy]
-  resources :categories, only: [:create, :index, :destroy] # todo: add show
+  resources :categories, only: [:create, :index, :destroy, :show]
   resources :transactions, only: [:create, :destroy, :index]
   resources :goals, only: [:create, :destroy, :index]
 

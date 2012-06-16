@@ -22,4 +22,9 @@ class CategoriesController < ApplicationController
 		@categories = Category.paginate(:page => params[:page])
 		@category = Category.new
 	end
+
+	def show
+		@category = Category.find(params[:id])
+		@debits = @category.debits.paginate(:page => params[:page])
+	end
 end
