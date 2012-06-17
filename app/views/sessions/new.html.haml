@@ -1,22 +1,15 @@
 - provide(:title, 'Sign In')
 .row
 	.span6.offset3
-		= form_tag(sessions_path, :class => "form-horizontal") do
+		= bootstrap_form_tag(sessions_path, :class => "form-horizontal") do
 			%fieldset
 				
-				%legend
-					%span.controls
-						Sign In
+				%legend<
+					%span.controls Sign In
 
-				.control-group
-					= label_tag :email, nil, :class => "control-label"
-					.controls
-						= text_field_tag :email, params[:email]
+				= bootstrap_text_field_tag :email, params[:email]
 
-				.control-group
-					= label_tag :password, nil, :class => "control-label"
-					.controls
-						= password_field_tag :password
+				= bootstrap_password_field_tag :password
 
-				.form-actions
-					= submit_tag "Sign In", :class => "btn btn-large btn-primary"
+				.form-actions<
+					= bootstrap_submit_tag "Sign In"
