@@ -1,1 +1,1 @@
-ActionView::Base.default_form_builder = MyCustomFormBuilder
+BootstrapForms::FormBuilder.default_form_builder = MyCustomFormBuilder

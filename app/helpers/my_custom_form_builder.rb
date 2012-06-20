@@ -1,4 +1,4 @@
-class MyCustomFormBuilder < ActionView::Helpers::FormBuilder
+class MyCustomFormBuilder < BootstrapForms::FormBuilder
 	def money_field(method, options = {})
 		value = @object.send(method)
 		if value.original_value
@@ -8,6 +8,6 @@ class MyCustomFormBuilder < ActionView::Helpers::FormBuilder
 		else
 			formatted_value = value.format(symbol: false)
 		end
-		number_field method, options.merge(value: (formatted_value), min: 0.01, step: 0.01)
+		number_field method, options.merge(prepend: '$', value: (formatted_value), min: 0.01, step: 0.01)
 	end
 end
