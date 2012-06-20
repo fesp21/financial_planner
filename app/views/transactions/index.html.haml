@@ -1,0 +1,35 @@
+- provide(:title, 'Enter Expenses')
+
+.page-header<
+	%h1<
+		Feel the burn
+		%small then dive into the toilet
+
+%section
+	.row
+		.span6
+			%h2 Easy Come
+			= render 'credits/new'
+		.span6
+			%h2 Easy Go
+			= render 'debits/new'
+
+%section
+	.row
+		.span9
+			%h2 Recent Activity
+			= will_paginate
+			%table.table.table-striped.table-condensed.table-bordered.transactions
+				%thead
+					%tr
+						%th Cost
+						%th Category
+						%th Date
+						%th Description
+				%tbody
+					- if @transactions.empty?
+						%tr
+							%td(colspan="4") No flushes yet. Rejoice!
+					- else
+						= render @transactions
+			= will_paginate

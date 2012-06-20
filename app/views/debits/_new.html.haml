@@ -1,0 +1,17 @@
+= bootstrap_form_for(@debit, :html => { :class => "form-horizontal" }) do |f|
+	%fieldset
+		= render 'shared/error_messages', object: f.object
+
+		= f.hidden_field :type
+
+		= f.money_field :amount, required: true
+		
+		= f.select :category_id, Category.all.collect{ |c| [c.name, c.id] }, include_blank: true
+		
+		= f.text_field :transaction_date, type: "date", required: true
+
+		= f.text_area :description, rows: nil, cols: nil
+		
+		.form-actions
+			= f.submit "Add Debit", :class => "btn btn-large btn-primary"
+			%small is that an oxymoron?
