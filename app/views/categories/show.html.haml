@@ -1,0 +1,20 @@
+- provide(:title, "Category #{@category.name}")
+%h1<
+	Category: 
+	= @category.name
+%section
+	%table.table.table-striped.table-condensed.table-bordered
+		%thead
+			%tr
+				%th Amount
+				%th Transaction Date
+				%th Description
+		%tbody
+			- if @debits.empty?
+				%tr
+					%td No flushes yet.
+					%td
+					%td
+			- else
+				= render @debits, hide_category: true
+	= will_paginate @debits

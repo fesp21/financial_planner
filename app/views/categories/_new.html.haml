@@ -1,0 +1,14 @@
+= bootstrap_form_for(@category, :html => { :class => "form-horizontal" }) do |f|
+	%fieldset
+		
+		%legend
+			%span.controls Add Category
+
+		= render 'shared/error_messages', object: f.object
+
+		= f.text_field :name, required: true
+		
+		= f.money_field :budget, required: true
+
+		.form-actions
+			= f.submit "Add Category", :class => "btn btn-large btn-primary"

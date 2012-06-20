@@ -1,0 +1,13 @@
+- spent = Money.us_dollar(category.debits.sum(:amount))
+- diff = category.budget - spent
+%tr
+	%td
+		= link_to category.name, category_path(category.id)
+		%span.delete
+			= link_to "delete", 
+				category, 
+				method: :delete, 
+				confirm: "All debits for this category will become orphans. Are you sure you want to ruin those poor debits?"
+	%td= "$#{category.budget}"
+	%td= spent.format
+	%td= diff.format

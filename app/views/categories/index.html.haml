@@ -1,0 +1,25 @@
+- provide(:title, 'Budget Categories')
+.page-header
+	%h1 Budget Categories
+
+%section
+	.row
+		.span6.offset3
+			= render 'new'
+
+%section
+	= will_paginate
+	%table.table.table-striped.table-condensed.table-bordered
+		%thead
+			%tr
+				%th Name
+				%th Budget
+				%th Spent
+				%th Money Left
+		%tbody
+			- if @categories.empty?
+				%tr
+					%td(colspan="4") No categories yet
+			- else
+				= render @categories
+	= will_paginate
