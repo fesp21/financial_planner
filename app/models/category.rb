@@ -20,4 +20,5 @@ class Category < ActiveRecord::Base
 	# todo: eventually, the unique columns should only be unique by user group
 	validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 	validates :budget, presence: true, is_money: true
+	default_scope order: 'categories.name'
 end
