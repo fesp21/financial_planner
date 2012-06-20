@@ -53,9 +53,14 @@ section {
 	width: 140px;
 }
 
-form legend small {
-	color: $grayLight;
-	font-size: 14px;
+form {
+	legend small {
+		color: $grayLight;
+		font-size: 14px;
+	}
+	.input-prepend input {
+		width: 182px;
+	}
 }
 
 /* index tables */
