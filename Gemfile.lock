@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:/imaus10/bootstrap_forms.git
+  revision: fb8419a9781c826e0545246cddd917465d729d54
+  specs:
+    bootstrap_forms (2.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,7 +40,6 @@ GEM
     bootstrap-sass (2.0.0)
     bootstrap-will_paginate (0.0.5)
       will_paginate
-    bootstrap_forms (2.0.1)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -161,7 +166,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.0.0)
   bootstrap-will_paginate (= 0.0.5)
-  bootstrap_forms (= 2.0.1)
+  bootstrap_forms!
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
   date_validator (= 0.6.3)

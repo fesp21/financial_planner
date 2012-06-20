@@ -11,7 +11,7 @@ gem 'foreigner', '1.1.6'
 gem 'money', '5.0.0'
 gem 'date_validator', '0.6.3'
 gem 'haml', '3.1.6'
-gem 'bootstrap_forms', '2.0.1'
+gem 'bootstrap_forms', :git => "git@github.com:/imaus10/bootstrap_forms.git"
 
 group :development do
   gem 'rspec-rails', '2.9.0'
