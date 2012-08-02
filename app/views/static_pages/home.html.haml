@@ -2,11 +2,15 @@
 	.page-header
 		%h1 In the toilet bowl
 	.hero-unit
-		%h1= @total.format
-		- if @total.cents > 0
-			%p Yay! You saved some money this month!
+		- if @empty
+			%h1 It's a new month
+			%p Fresh start or neverending nightmare?
 		- else
-			%p Uh-oh. Better re-evaluate your budget.
+			%h1= @total.format
+			- if @total.cents > 0
+				%p Yay! You saved some money this month!
+			- else
+				%p Uh-oh. Better re-evaluate your budget.
 - else
 	%p
 		Log in or eat butts
