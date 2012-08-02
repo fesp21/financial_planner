@@ -1,12 +1,10 @@
 class StaticPagesController < ApplicationController
+	include TransactionsHelper
 	def home
 		if signed_in?
-			monthCred = Credit.where("extract(month from transaction_date) = ?", Time.now.month).sum(:amount)
-			monthDeb = Debit.where("extract(month from transaction_date) = ?", Time.now.month).sum(:amount)
-			@empty = true
-			if monthCred != 0 and monthDeb != 0
-				@total = Money.us_dollar(monthCred - monthDeb)
-				@empty = false
+			@empty = transactions_empty?(Time.now.month)
+			if not @empty
+				@total = transaction_sum(Time.now.month)
 			end
 		end
 	end
