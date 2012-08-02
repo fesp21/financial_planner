@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+	include TransactionsHelper
 	before_filter :signed_in_user
 
 	def create
@@ -25,5 +26,14 @@ class TransactionsController < ApplicationController
 		@transactions = Transaction.paginate(:page => params[:page])
 		@debit = Debit.new(transaction_date: Time.now.to_date)
 		@credit = Credit.new(transaction_date: Time.now.to_date)
+	end
+
+	# todo: by years
+	def months
+		earliest = Transaction.minimum(:transaction_date).month
+		@months = {}
+		Time.now.month.downto(earliest).each do |month|
+			@months[Date::MONTHNAMES[month]] = transaction_sum(month)
+		end
 	end
 end

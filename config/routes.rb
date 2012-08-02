@@ -9,6 +9,7 @@ FinancialPlanner::Application.routes.draw do
   resources :users, only: [:new, :create, :index, :destroy]
   resources :categories, only: [:create, :index, :destroy, :show]
   resources :transactions, only: [:create, :destroy, :index]
+  match '/months', to: 'transactions#months'
   resources :goals, only: [:create, :destroy, :index]
 
   # The priority is based upon order of creation:
