@@ -2,9 +2,7 @@ module TransactionsHelper
 	
 	# todo: cache cred & deb?
 	def transactions_empty?(month)
-		credEmpty = Credit.where("extract(month from transaction_date) = ?", month).empty?
-		debEmpty = Debit.where("extract(month from transaction_date) = ?", month).empty?
-		return (credEmpty and debEmpty)
+		return Transaction.where("extract(month from transaction_date) = ?", month).empty?
 	end
 
 	def transaction_sum(month)
