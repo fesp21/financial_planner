@@ -8,22 +8,22 @@ This is a personal test of the Rails waters. Apologies for the transportation mi
 Todo
 ----
 
-Date validation error
-Set timezone
-Navigation reorganization
-Plan by month templates
-In place edit
-User groups
-Update specs
-Autofocus
-In line validation messages
-Client side validation
-Ajax
-Drag & drop goal rank
-Endless scroll
-Charts
-Style & logos
-Fluid layout
-Mobile stylesheet
-Animations
-Explicitly test the bugbear known as IE
++ Date validation error
++ Set timezone  
++ Navigation reorganization
++ Plan by month templates
++ In place edit
++ User groups
++ Update specs
++ Autofocus
++ In line validation messages
++ Client side validation
++ Ajax
++ Drag & drop goal rank
++ Endless scroll
++ Charts
++ Style & logos
++ Fluid layout
++ Mobile stylesheet
++ Animations
++ Explicitly test the bugbear known as IE
